@@ -1,1 +1,6 @@
+shadow Hub script
+
+
+
 loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Shadow-Hub-27866"))()
+
