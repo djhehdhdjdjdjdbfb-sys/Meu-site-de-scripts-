@@ -25,17 +25,20 @@ ColorSequenceKeypoint.new(1, Color3.fromRGB(80, 0, 120))
 gradient.Rotation = 90
 gradient.Parent = panel
 
---// Fundo com raios roxos
-local lightningBg = Instance.new("ImageLabel")
-lightningBg.Size = UDim2.new(1, 0, 1, 0)
-lightningBg.Position = UDim2.new(0, 0, 0, 0)
-lightningBg.BackgroundTransparency = 1
-lightningBg.Image = "rbxassetid://14216197206" -- use aqui o ID da textura de raio que quiser
-lightningBg.ImageColor3 = Color3.fromRGB(180, 0, 255)
-lightningBg.ImageTransparency = 0.15
-lightningBg.ZIndex = 0
-lightningBg.ScaleType = Enum.ScaleType.Crop
-lightningBg.Parent = panel
+--// Fundo do painel com imagem personalizada (substitui o bloco antigo)
+local existingBg = panel:FindFirstChild("LightningBgReplacement")
+if existingBg then existingBg:Destroy() end
+
+local background = Instance.new("ImageLabel")
+background.Name = "LightningBgReplacement"
+background.Size = UDim2.new(1, 0, 1, 0)
+background.Position = UDim2.new(0, 0, 0, 0)
+background.BackgroundTransparency = 1
+background.Image = "" -- sua imagem
+background.ImageTransparency = 0.15
+background.ZIndex = 0
+background.ScaleType = Enum.ScaleType.Crop
+background.Parent = panel
 
 --// Barra superior
 local topBar = Instance.new("Frame")
@@ -70,6 +73,74 @@ minimize.TextSize = 18
 minimize.ZIndex = 3
 minimize.Parent = topBar
 
+--// Botão quadrado (minimizar especial)
+local miniSquare = Instance.new("TextButton")
+miniSquare.Size = UDim2.new(0, 25, 0, 25)
+miniSquare.Position = UDim2.new(1, -85, 0, 3)
+miniSquare.BackgroundColor3 = Color3.fromRGB(120, 0, 180)
+miniSquare.Text = "▢"
+miniSquare.TextColor3 = Color3.new(1, 1, 1)
+miniSquare.Font = Enum.Font.GothamBold
+miniSquare.TextSize = 18
+miniSquare.BorderSizePixel = 0
+miniSquare.AutoButtonColor = true
+miniSquare.ZIndex = 999
+miniSquare.Parent = topBar
+
+--// Quadrado visível quando minimizado
+local miniFrame = Instance.new("ImageButton")
+miniFrame.Size = UDim2.new(0, 52, 0, 52)
+miniFrame.Position = UDim2.new(0.05, 0, 0.8, 0)
+miniFrame.Image = "rbxassetid://80463044719707"
+miniFrame.BackgroundTransparency = 0
+miniFrame.BackgroundColor3 = Color3.fromRGB(50, 0, 80)
+miniFrame.Visible = false
+miniFrame.Draggable = true
+miniFrame.ZIndex = 1000
+miniFrame.Parent = gui
+
+--// Efeito de brilho pulsante no quadrado
+local TweenService = game:GetService("TweenService")
+
+task.spawn(function()
+	while true do
+		if miniFrame.Visible then
+			-- Brilho aumenta
+			local tween1 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+				ImageColor3 = Color3.fromRGB(255, 255, 255),
+			})
+			tween1:Play()
+			tween1.Completed:Wait()
+
+			-- Brilho diminui
+			local tween2 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+				ImageColor3 = Color3.fromRGB(180, 180, 255),
+			})
+			tween2:Play()
+			tween2.Completed:Wait()
+		else
+			task.wait(0.5)
+		end
+	end
+end)
+
+-- Função do botão quadrado
+miniSquare.MouseButton1Click:Connect(function()
+	if panel.Visible then
+		panel.Visible = false
+		miniFrame.Visible = true
+	else
+		panel.Visible = true
+		miniFrame.Visible = false
+	end
+end)
+
+-- Quando clicar no quadrado, volta o painel
+miniFrame.MouseButton1Click:Connect(function()
+	panel.Visible = true
+	miniFrame.Visible = false
+end)
+
 --// Botão fechar
 local close = Instance.new("TextButton")
 close.Size = UDim2.new(0, 25, 0, 25)
@@ -86,7 +157,8 @@ close.Parent = topBar
 local content = Instance.new("Frame")
 content.Size = UDim2.new(1, 0, 1, -30)
 content.Position = UDim2.new(0, 0, 0, 30)
-content.BackgroundTransparency = 1
+content.BackgroundColor3 = Color3.fromRGB(50, 0, 80)
+content.BackgroundTransparency = 1.4 -- ajusta o quanto quer transparente
 content.ZIndex = 2
 content.Parent = panel
 
