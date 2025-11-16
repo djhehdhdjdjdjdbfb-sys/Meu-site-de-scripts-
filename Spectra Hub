@@ -103,42 +103,43 @@ miniFrame.Parent = gui
 local TweenService = game:GetService("TweenService")
 
 task.spawn(function()
-	while true do
-		if miniFrame.Visible then
-			-- Brilho aumenta
-			local tween1 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-				ImageColor3 = Color3.fromRGB(255, 255, 255),
-			})
-			tween1:Play()
-			tween1.Completed:Wait()
+while true do
+if miniFrame.Visible then
+-- Brilho aumenta
+local tween1 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+ImageColor3 = Color3.fromRGB(255, 255, 255),
+})
+tween1:Play()
+tween1.Completed:Wait()
 
-			-- Brilho diminui
-			local tween2 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-				ImageColor3 = Color3.fromRGB(180, 180, 255),
-			})
-			tween2:Play()
-			tween2.Completed:Wait()
-		else
-			task.wait(0.5)
-		end
-	end
+-- Brilho diminui  
+		local tween2 = TweenService:Create(miniFrame, TweenInfo.new(0.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {  
+			ImageColor3 = Color3.fromRGB(180, 180, 255),  
+		})  
+		tween2:Play()  
+		tween2.Completed:Wait()  
+	else  
+		task.wait(0.5)  
+	end  
+end
+
 end)
 
 -- Função do botão quadrado
 miniSquare.MouseButton1Click:Connect(function()
-	if panel.Visible then
-		panel.Visible = false
-		miniFrame.Visible = true
-	else
-		panel.Visible = true
-		miniFrame.Visible = false
-	end
+if panel.Visible then
+panel.Visible = false
+miniFrame.Visible = true
+else
+panel.Visible = true
+miniFrame.Visible = false
+end
 end)
 
 -- Quando clicar no quadrado, volta o painel
 miniFrame.MouseButton1Click:Connect(function()
-	panel.Visible = true
-	miniFrame.Visible = false
+panel.Visible = true
+miniFrame.Visible = false
 end)
 
 --// Botão fechar
@@ -169,6 +170,7 @@ scroll.Position = UDim2.new(0, 5, 0, 5)
 scroll.BackgroundTransparency = 1
 scroll.ScrollBarThickness = 6
 scroll.CanvasSize = UDim2.new(0, 0, 0, 2000)
+scroll.CanvasPosition = Vector2.new(0,0)
 scroll.ZIndex = 3
 scroll.Parent = content
 
@@ -219,6 +221,18 @@ end)
 end
 
 --// Botões (mesmos anteriores)
+-- Texto no topo: Skins ♂️
+local topLabel = Instance.new("TextLabel")
+topLabel.Size = UDim2.new(1, 0, 0, 40)
+topLabel.Position = UDim2.new(0, 0, 0, -40)
+topLabel.BackgroundTransparency = 1
+topLabel.Text = "Skins ♂️"
+topLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+topLabel.Font = Enum.Font.GothamBold
+topLabel.TextSize = 24
+topLabel.ZIndex = 5
+topLabel.Parent = scroll
+
 createButton("Black", 10, function()
 runWear({
 124839612210239,124839612210239,10714003426,110782737608262,84312830787954,77391442486169,
@@ -301,7 +315,7 @@ end)
 
 end)
 
-createButton("Gocu", 510, function()
+createButton("Goku", 510, function()
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Wear = ReplicatedStorage.Remotes.Wear
 
@@ -314,111 +328,188 @@ end)
 end)
 
 createButton("1x1x1", 560, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(13523212687)
-		Wear:InvokeServer(123402748268535)
-		Wear:InvokeServer(131754156599227)
-		Wear:InvokeServer(116197047142039)
-		Wear:InvokeServer(18853865420)
-		Wear:InvokeServer(109761633301819)
-	end)
+pcall(function()  
+	Wear:InvokeServer(13523212687)  
+	Wear:InvokeServer(123402748268535)  
+	Wear:InvokeServer(131754156599227)  
+	Wear:InvokeServer(116197047142039)  
+	Wear:InvokeServer(18853865420)  
+	Wear:InvokeServer(109761633301819)  
+end)
+
 end)
 
 createButton("Fada 1", 610, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(226189871)
-	end)
+pcall(function()  
+	Wear:InvokeServer(226189871)  
+end)
+
 end)
 
 createButton("Fada 2", 660, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(150381051)
-	end)
+pcall(function()  
+	Wear:InvokeServer(150381051)  
+end)
+
 end)
 
 createButton("Fada 3", 710, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(141742418)
-	end)
+pcall(function()  
+	Wear:InvokeServer(141742418)  
+end)
+
 end)
 
 createButton("Fada 4", 760, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(128217885)
-	end)
+pcall(function()  
+	Wear:InvokeServer(128217885)  
+end)
+
 end)
 
 createButton("Asa de Anjo", 810, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(192557913)
-	end)
+pcall(function()  
+	Wear:InvokeServer(192557913)  
+end)
+
 end)
 
 createButton("Abóbora", 860, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(132809431)
-	end)
+pcall(function()  
+	Wear:InvokeServer(132809431)  
+end)
+
 end)
 
 createButton("Chapéu", 910, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(305888394)
-	end)
+pcall(function()  
+	Wear:InvokeServer(305888394)  
+end)
+
 end)
 
 createButton("Sasuke", 560, function()
-	local ReplicatedStorage = game:GetService("ReplicatedStorage")
-	local Wear = ReplicatedStorage.Remotes.Wear
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
 
-	pcall(function()
-		Wear:InvokeServer(17084577233)
-		Wear:InvokeServer(114248475006211)
-		Wear:InvokeServer(94502992658752)
-		Wear:InvokeServer(14221681868)
-		Wear:InvokeServer(13442995528)
-		Wear:InvokeServer(92447738117948)
-		Wear:InvokeServer(112022464137788)
-		Wear:InvokeServer(73035562466867)
-		Wear:InvokeServer(658832408)
-		Wear:InvokeServer(658831143)
-		Wear:InvokeServer(658830056)
+pcall(function()  
+	Wear:InvokeServer(17084577233)  
+	Wear:InvokeServer(114248475006211)  
+	Wear:InvokeServer(94502992658752)  
+	Wear:InvokeServer(14221681868)  
+	Wear:InvokeServer(13442995528)  
+	Wear:InvokeServer(92447738117948)  
+	Wear:InvokeServer(112022464137788)  
+	Wear:InvokeServer(73035562466867)  
+	Wear:InvokeServer(658832408)  
+	Wear:InvokeServer(658831143)  
+	Wear:InvokeServer(658830056)  
 
-		-- Executa o ID extra (135542686675252)
-		Wear:InvokeServer(135542686675252)
+	--Executa o ID extra (135542686675252)  
+	Wear:InvokeServer(135542686675252)  
 
-		-- Toca música
-		local sound = Instance.new("Sound")
-		sound.SoundId = "rbxassetid://1592708450"
-		sound.Volume = 2
-		sound.PlayOnRemove = false
-		sound.Parent = workspace
-		sound:Play()
-	end)
+	-- Toca música  
+	local sound = Instance.new("Sound")  
+	sound.SoundId = "rbxassetid://1592708450"  
+	sound.Volume = 2  
+	sound.PlayOnRemove = false  
+	sound.Parent = workspace  
+	sound:Play()  
 end)
+
+end)
+
+createButton("Mandrake roxo", 960, function()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
+
+pcall(function()  
+	Wear:InvokeServer(12450962642)  
+	Wear:InvokeServer(15013531613)  
+	Wear:InvokeServer(74511677578942)  
+	Wear:InvokeServer(15237969727)  
+	Wear:InvokeServer(18154390923)  
+	Wear:InvokeServer(18179500302)  
+	Wear:InvokeServer(13336755067)  
+	Wear:InvokeServer(137815591329905)  
+	Wear:InvokeServer(18511293297)  
+	Wear:InvokeServer(6093232286)  
+	Wear:InvokeServer(15171681300)  
+	Wear:InvokeServer(6005721187)  
+	Wear:InvokeServer(16509708037)  
+	Wear:InvokeServer(117826128727710)  
+
+	Wear:InvokeServer(5319922112)  
+	Wear:InvokeServer(5319909330)  
+	Wear:InvokeServer(5319900634)  
+	Wear:InvokeServer(5319917561)  
+end)
+
+end)
+
+createButton("Mandrake dark", 1010, function()
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Wear = ReplicatedStorage.Remotes.Wear
+
+pcall(function()  
+	Wear:InvokeServer(13531975018)  
+	Wear:InvokeServer(6093230191)  
+	Wear:InvokeServer(14936461771)  
+	Wear:InvokeServer(4487802862)  
+	Wear:InvokeServer(15490853240)  
+	Wear:InvokeServer(13343437648)  
+	Wear:InvokeServer(14546496413)  
+	Wear:InvokeServer(13531980898)  
+	Wear:InvokeServer(8356417938)  
+	Wear:InvokeServer(14908179726)  
+	Wear:InvokeServer(14279809239)  
+	Wear:InvokeServer(13351846808)  
+	Wear:InvokeServer(11774975425)  
+	Wear:InvokeServer(11363001316)  
+	Wear:InvokeServer(14809853933)  
+	Wear:InvokeServer(973771666)  
+	Wear:InvokeServer(973767371)  
+	Wear:InvokeServer(973766674)  
+	Wear:InvokeServer(973770652)  
+end)
+
+end)
+
+-- Texto no final: Skins ♀️
+local bottomLabel = Instance.new("TextLabel")
+bottomLabel.Size = UDim2.new(1, 0, 0, 40)
+bottomLabel.Position = UDim2.new(0, 0, 0, 1385) -- Ajuste se adicionar MUITOS botões
+bottomLabel.BackgroundTransparency = 1
+bottomLabel.Text = "Skins ♀️"
+bottomLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+bottomLabel.Font = Enum.Font.GothamBold
+bottomLabel.TextSize = 24
+bottomLabel.ZIndex = 5
+bottomLabel.Parent = scroll
 --// Fechar e minimizar
 close.MouseButton1Click:Connect(function()
 gui:Destroy()
@@ -438,59 +529,60 @@ end
 end)
 
 task.spawn(function()
-	local Players = game:GetService("Players")
-	local player = Players.LocalPlayer
-	local PlayerGui = player:WaitForChild("PlayerGui")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
 
-	-- Cria a interface principal
-	local screenGui = Instance.new("ScreenGui")
-	screenGui.Name = "CreditMessage"
-	screenGui.ResetOnSpawn = false
-	screenGui.Parent = PlayerGui
+-- Cria a interface principal  
+local screenGui = Instance.new("ScreenGui")  
+screenGui.Name = "CreditMessage"  
+screenGui.ResetOnSpawn = false  
+screenGui.Parent = PlayerGui  
 
-	-- Cria o som
-	local sound = Instance.new("Sound")
-	sound.SoundId = "rbxassetid://94433663716765"
-	sound.Volume = 5
-	sound.Parent = screenGui
-	sound:Play()
+-- Cria o som  
+local sound = Instance.new("Sound")  
+sound.SoundId = "rbxassetid://94433663716765"  
+sound.Volume = 5  
+sound.Parent = screenGui  
+sound:Play()  
 
-	-- Cria o texto
-	local textLabel = Instance.new("TextLabel")
-	textLabel.Parent = screenGui
-	textLabel.Size = UDim2.new(0, 550, 0, 60)
-	textLabel.Position = UDim2.new(1, -570, 1, -70) -- canto inferior direito
-	textLabel.BackgroundTransparency = 1
-	textLabel.Text = "assure_TV — muito obrigado por usar o Spectra HUB 🕷️ / V1!!"
-	textLabel.TextScaled = true
-	textLabel.Font = Enum.Font.GothamBold
-	textLabel.TextStrokeTransparency = 0.3
-	textLabel.TextTransparency = 0
+-- Cria o texto  
+local textLabel = Instance.new("TextLabel")  
+textLabel.Parent = screenGui  
+textLabel.Size = UDim2.new(0, 550, 0, 60)  
+textLabel.Position = UDim2.new(1, -570, 1, -70) -- canto inferior direito  
+textLabel.BackgroundTransparency = 1  
+textLabel.Text = "assure_TV — muito obrigado por usar o Spectra HUB 🕷️ / V1!!"  
+textLabel.TextScaled = true  
+textLabel.Font = Enum.Font.GothamBold  
+textLabel.TextStrokeTransparency = 0.3  
+textLabel.TextTransparency = 0  
 
-	-- Efeito RGB + brilho pulsante
-	local RunService = game:GetService("RunService")
-	local startTime = tick()
+-- Efeito RGB + brilho pulsante  
+local RunService = game:GetService("RunService")  
+local startTime = tick()  
 
-	local connection = RunService.RenderStepped:Connect(function()
-		local t = tick() - startTime
-		local r = math.sin(t * 5) * 127 + 128
-		local g = math.sin(t * 5 + 2) * 127 + 128
-		local b = math.sin(t * 5 + 4) * 127 + 128
-		textLabel.TextColor3 = Color3.fromRGB(r, g, b)
-		textLabel.TextStrokeTransparency = 0.2 + math.sin(t * 3) * 0.1
-	end)
+local connection = RunService.RenderStepped:Connect(function()  
+	local t = tick() - startTime  
+	local r = math.sin(t * 5) * 127 + 128  
+	local g = math.sin(t * 5 + 2) * 127 + 128  
+	local b = math.sin(t * 5 + 4) * 127 + 128  
+	textLabel.TextColor3 = Color3.fromRGB(r, g, b)  
+	textLabel.TextStrokeTransparency = 0.2 + math.sin(t * 3) * 0.1  
+end)  
 
-	-- Mostra por 5 segundos
-	task.wait(5)
+-- Mostra por 5 segundos  
+task.wait(5)  
 
-	-- Para o efeito e remove a mensagem
-	connection:Disconnect()
+-- Para o efeito e remove a mensagem  
+connection:Disconnect()  
 
-	-- Efeito de desaparecimento suave
-	local TweenService = game:GetService("TweenService")
-	local desaparecer = TweenService:Create(textLabel, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {TextTransparency = 1})
-	desaparecer:Play()
-	desaparecer.Completed:Wait()
+-- Efeito de desaparecimento suave  
+local TweenService = game:GetService("TweenService")  
+local desaparecer = TweenService:Create(textLabel, TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {TextTransparency = 1})  
+desaparecer:Play()  
+desaparecer.Completed:Wait()  
 
-	screenGui:Destroy()
+screenGui:Destroy()
+
 end)
