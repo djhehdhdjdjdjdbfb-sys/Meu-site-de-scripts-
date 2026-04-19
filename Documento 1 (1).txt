@@ -1,19 +1,4 @@
---// SERVICES
-local Players = game:GetService("Players")
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Workspace = game:GetService("Workspace")
-local RunService = game:GetService("RunService")
 
---// LOCAL PLAYER & CHARACTER
-local plr = Players.LocalPlayer
-local character = plr.Character or plr.CharacterAdded:Wait()
-local humanoid = character:WaitForChild("Humanoid")
-
---// UPDATE CHARACTER WHEN RESPAWNED
-plr.CharacterAdded:Connect(function(char)
-    character = char
-    humanoid = char:WaitForChild("Humanoid")
-end)
 
 
 
